@@ -2,16 +2,16 @@
 
 using with docker container
 
-'''sh
+```sh
 
 docker pull redis
 
-'''
+```
 
 and start container 
 
-'''sh
+```sh
 
 docker run --name cache-server -d redis
 
-'''
+```
