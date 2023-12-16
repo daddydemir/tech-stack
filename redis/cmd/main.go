@@ -8,7 +8,8 @@ import (
 
 func main() {
 
-	cache.StartCacheClient()
+	cacheService := cache.Connector{CacheService: &cache.RedisClient{}}
+	cacheService.StartCacheClientConnection()
 
 	write := service.Write("domain", "daddydemir.dev")
 	if write {

@@ -7,15 +7,16 @@ import (
 	"tech-stack/redis/config"
 )
 
-var RedisClient *redis.Client
+type RedisClient struct {
+}
 
-func StartCacheClient() {
+func (r *RedisClient) StartCacheClient() {
 	db, err := strconv.Atoi(config.Get("REDIS_DB"))
 	if err != nil {
 		log.Fatal("Cache resource not found.")
 	}
 
-	RedisClient = redis.NewClient(&redis.Options{
+	RC = redis.NewClient(&redis.Options{
 		Addr:     config.Get("REDIS_ADDR"),
 		Password: config.Get("REDIS_PASS"),
 		DB:       db,
