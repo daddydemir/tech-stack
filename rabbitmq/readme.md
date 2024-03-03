@@ -1,0 +1,1 @@
+## RABBITMQ---```shelldocker run -d --name tech-stack-rabbit -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=rabbit-user -e RABBITMQ_DEFAULT_PASS=password rabbitmq```

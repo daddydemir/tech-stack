@@ -7,9 +7,10 @@ import (
 
 var Channel *amqp.Channel
 
-func connect2rabbitmq(){
-	c , err := amqp.Dial("connection_string")
-	if  err != nil {
+func connect2rabbitmq() {
+	s := "amqp://rabbit-user:password@localhost:5672"
+	c, err := amqp.Dial(s)
+	if err != nil {
 		log.Println("RabbitMQ connection error : ", err)
 	}
 
