@@ -23,10 +23,10 @@ func DeclareFanoutExchange() {
 	}
 }
 
-func DeclareQueue() {
+func DeclareQueue(queueName string) {
 
 	_, err := Channel.QueueDeclare(
-		queue,
+		queueName,
 		true,
 		true,
 		true,
@@ -38,10 +38,10 @@ func DeclareQueue() {
 	}
 }
 
-func BindQueueToExchange() {
+func BindQueueToExchange(queueName string) {
 
 	err := Channel.QueueBind(
-		queue,
+		queueName,
 		"",
 		exchange,
 		false,

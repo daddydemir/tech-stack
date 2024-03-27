@@ -18,7 +18,7 @@ func StartHttpServer() {
 
 	router.HandleFunc("/", nil)
 	router.HandleFunc("/publish/{data}", publishMessage).Methods(http.MethodGet)
-	router.HandleFunc("/consume", consumeMessage).Methods(http.MethodGet)
+	router.HandleFunc("/consume/{data}", consumeMessage).Methods(http.MethodGet)
 
 	err := http.ListenAndServe(":8080", router)
 	if err != nil {
@@ -31,7 +31,7 @@ func publishMessage(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	data := vars["data"]
 
-	rabbitmq.PublishWithQueue("public-queue", data)
+	rabbitmq.PublishWithExchange("public-1", data)
 
 	err := json.NewEncoder(w).Encode("message send: " + string(data))
 	if err != nil {
@@ -43,7 +43,10 @@ func consumeMessage(w http.ResponseWriter, r *http.Request) {
 
 	consumerCount++
 
-	log.Printf("consumer %v is started. \n", consumerCount)
+	vars := mux.Vars(r)
+	data := vars["data"]
 
-	rabbitmq.Consume(consumerCount, "public-queue")
+	log.Printf("consumer %v is started. | litening queue: %v  \n", consumerCount, data)
+
+	rabbitmq.Consume(consumerCount, data)
 }

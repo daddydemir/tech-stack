@@ -1,0 +1,1 @@
+### Fanout Exchange---Fanout exchangede ilgili exchange'e gonderilen butun mesajlar bu exchange'e bind olmus butun queue'lara iletilir. ![img.png](img.png)
