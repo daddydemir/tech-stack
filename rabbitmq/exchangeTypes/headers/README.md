@@ -1,0 +1,1 @@
+### Headers Exchange ---headers parametresi ile olusturulan exchange'e bind edilen bir kuyruktamesaj exchange'e gonderilir ancak mesaj gonderilirken mesaj icerisinde header alani doldurulur. kuyruklar exchange'e bind edilirken 
