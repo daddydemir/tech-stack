@@ -52,8 +52,7 @@ func prepareMessage(message string) amqp.Publishing {
 func prepareHeader() amqp.Table {
 	header := amqp.Table{
 		"x-match": "all",
-		"type":    "message",
-		"id":      1,
+		"type":    "finance",
 	}
 
 	return header

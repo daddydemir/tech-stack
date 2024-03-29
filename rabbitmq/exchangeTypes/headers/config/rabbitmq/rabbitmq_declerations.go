@@ -1,6 +1,9 @@
 package rabbitmq
 
-import "log"
+import (
+	amqp "github.com/rabbitmq/amqp091-go"
+	"log"
+)
 
 var (
 	queue    = "header-queue"
@@ -31,7 +34,10 @@ func DeclareQueue(queueName string) {
 		true,
 		true,
 		true,
-		nil)
+		amqp.Table{
+			"x-match": "all",
+			"type":    "finance",
+		})
 
 	if err != nil {
 		log.Println("RabbitMQ queue declare error :", err)
