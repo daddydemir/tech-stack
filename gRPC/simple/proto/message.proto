@@ -1,0 +1,1 @@
+syntax = "proto3";option go_package = "simple/proto/message";message StringMessage {  string value = 1;}
